@@ -64,9 +64,9 @@ class ChartWizardEngine(BaseEngine):
             if contract.history_data:
                 data: list[BarData] | None = self.main_engine.query_history(req, contract.gateway_name)
             else:
-                data: list[BarData] | None = self.datafeed.query_bar_history(req)
+                data = self.datafeed.query_bar_history(req)
         else:
-            data: list[BarData] = self.database.load_bar_data(
+            data = self.database.load_bar_data(
                 symbol,
                 exchange,
                 interval,
